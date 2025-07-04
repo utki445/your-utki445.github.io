@@ -6,8 +6,15 @@
   <title>Utkarsh Persai | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --accent: #0071e3;
+      --light-accent: #2997ff;
+      --subtle-text: #6e6e73;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -17,103 +24,166 @@
       scroll-behavior: smooth;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      background-color: #0e0e10;
-      color: #e0e0e0;
+      font-family: 'SF Pro Display', 'Inter', sans-serif;
+      font-weight: 400;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.8;
+      animation: bodyFade 1.2s ease-in-out;
+    }
+    @keyframes bodyFade {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
     }
     header {
-      padding: 3rem 1rem;
+      padding: 4rem 1rem 2rem;
       text-align: center;
-      background: #121214;
+      background: var(--bg-color);
+      animation: fadeIn 1.5s ease-in-out forwards;
     }
     header h1 {
-      font-size: 2.4rem;
-      font-weight: 500;
-      color: #ffffff;
-      animation: fadeIn 1s ease-in-out;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-color);
+      opacity: 0;
+      animation: slideFadeIn 1.2s ease forwards;
+      animation-delay: 0.2s;
     }
     header p {
-      margin-top: 0.8rem;
-      font-size: 1.1rem;
-      color: #b0b0b0;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: var(--subtle-text);
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      opacity: 0;
+      animation: slideFadeIn 1.2s ease forwards;
+      animation-delay: 0.4s;
     }
     nav {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* This is crucial for horizontal layout and wrapping on smaller screens */
       justify-content: center;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 1rem;
       padding: 1rem;
-      background-color: #18181b;
+      background-color: #f5f5f7;
+      border-bottom: 1px solid #d2d2d7;
       position: sticky;
       top: 0;
       z-index: 100;
+      animation: fadeInDown 0.8s ease-in-out;
     }
     nav a {
-      color: #a6a6ff;
+      color: var(--text-color);
       text-decoration: none;
       font-size: 1rem;
-      transition: color 0.3s;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
+      transition: all 0.3s ease;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      background-color: transparent;
+      font-weight: 500;
+      position: relative; /* Added for the ::after pseudo-element */
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: var(--accent);
+      width: 0;
+      transition: width 0.3s;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    nav a:hover::after {
+      width: 100%;
     }
     nav a:hover {
-      color: #ffd6e0;
-      background-color: #2a2a2e;
+      color: var(--accent);
+      background-color: rgba(0, 113, 227, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
-    /* Special style for the download button */
     nav a.download-btn {
-        background-color: #a6a6ff;
-        color: #121214;
-        font-weight: 500;
+      background-color: #a6a6ff;
+      color: #000;
+      font-weight: 600;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
     }
     nav a.download-btn:hover {
-        background-color: #ffd6e0;
+      background-color: #b6b6ff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-1px);
     }
     section {
       max-width: 960px;
-      margin: 2rem auto;
+      margin: 3rem auto;
       padding: 1rem 1.5rem;
-      animation: fadeInUp 0.6s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    section:nth-child(even) {
+      animation-delay: 0.2s;
+    }
+    section:nth-child(odd) {
+      animation-delay: 0.4s;
     }
     h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: #ffb6c1;
-      font-weight: 400;
+      color: var(--accent);
+      font-weight: 500;
     }
     ul {
-      list-style-type: square;
-      padding-left: 1.5rem;
+      list-style: none;
+      padding-left: 0;
     }
     ul li {
-      margin-bottom: 0.6rem;
-    }
-    .skills ul, .certs ul, .languages ul, .education ul {
+      margin-bottom: 0.8rem;
+      position: relative;
       padding-left: 1.5rem;
-      list-style: circle;
     }
-    .skills ul li, .certs ul li, .languages ul li, .education ul li {
-      margin-bottom: 0.4rem;
+    ul li::before {
+      content: "\2022";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
     }
     footer {
       text-align: center;
       padding: 2rem 1rem;
-      color: #888;
+      color: var(--subtle-text);
       font-size: 0.9rem;
-      border-top: 1px solid #2a2a2e;
-      margin-top: 2rem;
+      border-top: 1px solid #d2d2d7;
+      margin-top: 3rem;
+      background: #f5f5f7;
+      animation: fadeIn 1.5s ease-in;
+    }
+    a {
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #005bb5;
     }
     @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-10px);}
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideFadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
       to {opacity: 1; transform: translateY(0);}
     }
     @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
+      from {opacity: 0; transform: translateY(40px);}
       to {opacity: 1; transform: translateY(0);}
     }
     @media screen and (max-width: 768px) {
@@ -121,26 +191,83 @@
         gap: 0.8rem;
       }
       nav a {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         padding: 0.4rem 0.8rem;
       }
     }
     @media screen and (max-width: 600px) {
+      header {
+        padding: 2rem 1rem 1rem;
+      }
       header h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        line-height: 1.3;
+      }
+      header p {
+        font-size: 1rem;
+        padding: 0 1rem;
       }
       nav {
-        flex-direction: column;
+        flex-direction: column; /* This makes them stack vertically on small screens */
         align-items: center;
-        gap: 0.8rem;
+        gap: 0.6rem;
+      }
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        width: 90%; /* Make buttons full width on small screens */
+        text-align: center;
+      }
+      section {
+        padding: 1rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      ul li {
+        font-size: 0.95rem;
+      }
+      footer {
+        font-size: 0.8rem;
+        padding: 1.5rem 1rem;
       }
     }
-  </style>
+    section.parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 6rem 2rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+</style>
+<script>
+  // Mobile-friendly toggle for nav (hamburger can be added later)
+  window.addEventListener("DOMContentLoaded", () => {
+    const nav = document.querySelector("nav");
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+  });
+</script>
 </head>
 <body>
-
   <header>
     <h1>Utkarsh Persai</h1>
+    <p style="font-style: italic; font-size: 1rem; margin-top: 0.5rem; color: var(--subtle-text);">Turning data into direction, insight into impact.</p>
     <p>B.Tech CSE @ VIT Vellore | Passionate about Data Science, Business Intelligence, and Analytics. I combine technical skills and creativity to bring real-world impact through data-driven solutions.</p>
   </header>
 
@@ -164,13 +291,11 @@
 
     <section id="education">
       <h2>Education</h2>
-      <div class="education">
-        <ul>
-          <li><strong>B.Tech in Computer Science and Engineering</strong>, VIT Vellore (2023–2027)</li>
-          <li><strong>High School Diploma (81.4%)</strong>,  – Bhopal, Madhya Pradesh (2021–2023)</li>
-          <li><strong>Secondary School Certificate (81%)</strong>, – Bhopal, Madhya Pradesh (2019–2021)</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>B.Tech in Computer Science and Engineering</strong>, VIT Vellore (2023–2027)</li>
+        <li><strong>High School Diploma (81.4%)</strong>, – Bhopal, Madhya Pradesh (2021–2023)</li>
+        <li><strong>Secondary School Certificate (81%)</strong>, – Bhopal, Madhya Pradesh (2019–2021)</li>
+      </ul>
     </section>
 
     <section id="experience">
@@ -184,57 +309,59 @@
     <section id="projects">
       <h2>Projects</h2>
       <ul>
-        <li><strong>Retail Revenue Dashboard (Power BI)</strong><br/>Created a dynamic dashboard that visualizes revenue trends, identifies top customers and products, and helps derive strategic business insights using clean Excel and DAX integration.</li>
-        <li><strong>GenAI Collections Strategy (TCS)</strong><br/>Performed EDA and AI-driven delinquency prediction. Produced a business report to enhance collection strategy using data storytelling and actionable insights.</li>
+        <li>
+          <strong>Retail Revenue Dashboard (Power BI)</strong><br/>
+          Created a dynamic dashboard that visualizes revenue trends, identifies top customers and products, and helps derive strategic business insights using clean Excel and DAX integration.
+        </li>
+        <li>
+          <strong>GenAI Collections Strategy (TCS)</strong><br/>
+          Performed EDA and AI-driven delinquency prediction. Produced a business report to enhance collection strategy using data storytelling and actionable insights.
+        </li>
       </ul>
     </section>
-    
+
     <section id="skills">
-        <h2>Skills, Tools & Languages</h2>
-        <div class="skills">
-          <h4>Technical Skills</h4>
-          <ul>
-            <li>Python</li>
-            <li>MySQL</li>
-            <li>Excel</li>
-            <li>HTML/CSS</li>
-            <li>Power BI</li>
-            <li>Tableau</li>
-          </ul>
-        </div>
-        <div class="languages" style="margin-top: 1.5rem;">
-          <h4>Languages</h4>
-          <ul>
-            <li>Hindi (Native)</li>
-            <li>English (Fluent)</li>
-            <li>German (Beginner)</li>
-          </ul>
-        </div>
+      <h2>Skills, Tools & Languages</h2>
+      <h4>Technical Skills</h4>
+      <ul>
+        <li>Python</li>
+        <li>MySQL</li>
+        <li>Excel</li>
+        <li>HTML/CSS</li>
+        <li>Power BI</li>
+        <li>Tableau</li>
+      </ul>
+      <h4 style="margin-top: 1.5rem;">Languages</h4>
+      <ul>
+        <li>Hindi (Native)</li>
+        <li>English (Fluent)</li>
+        <li>German (Beginner)</li>
+      </ul>
     </section>
 
     <section id="certifications">
       <h2>Certifications</h2>
-      <div class="certs">
-        <ul>
-          <li><strong>AWS APAC Architecture:</strong> Built scalable cloud solutions using AWS Elastic Beanstalk.</li>
-          <li><strong>Deloitte Data Analytics:</strong> Used Tableau and Excel to analyze data and derive decisions.</li>
-          <li><strong>TCS Data Visualisation:</strong> Created executive-ready dashboards and client-specific questions.</li>
-          <li><strong>TCS GenAI Analytics:</strong> Developed AI models for delinquency risk and visual storytelling reports.</li>
-        </ul>
-      </div>
+      <ul>
+        <li><strong>AWS APAC Architecture:</strong> Built scalable cloud solutions using AWS Elastic Beanstalk.</li>
+        <li><strong>Deloitte Data Analytics:</strong> Used Tableau and Excel to analyze data and derive decisions.</li>
+        <li><strong>TCS Data Visualisation:</strong> Created executive-ready dashboards and client-specific questions.</li>
+        <li><strong>TCS GenAI Analytics:</strong> Developed AI models for delinquency risk and visual storytelling reports.</li>
+      </ul>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
       <p>Feel free to reach out to me via email or phone.</p>
-      <p>Email: <a href="mailto:utkarshpersai@gmail.com" style="color:#a6a6ff">utkarshpersai@gmail.com</a></p>
-      <p>Phone: <a href="tel:+919589573779" style="color:#a6a6ff">+91 95895 73779</a></p>
+      <p>Email: <a href="mailto:utkarshpersai@gmail.com">utkarshpersai@gmail.com</a></p>
+      <p>Phone: <a href="tel:+919589573779">+91 95895 73779</a></p>
+    </section>
+      <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1549921296-3c8c88f6bcd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+      Keep exploring. Keep evolving.
     </section>
   </main>
 
   <footer>
-    &copy; 2024 Utkarsh Persai | Inspired by Apple.com | Designed with 💻 and ☕<br/>Connect on <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank" style="color:#a6a6ff; text-decoration: none;">LinkedIn</a> or <a href="https://github.com/utki445" target="_blank" style="color:#a6a6ff; text-decoration: none;">GitHub</a>
+    &copy; 2024 Utkarsh Persai | Inspired by Apple.com | Designed with 💻 and ☕<br/>Connect on <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank">LinkedIn</a> or <a href="https://github.com/utki445" target="_blank">GitHub</a>
   </footer>
-
 </body>
 </html>
