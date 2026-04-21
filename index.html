@@ -3,365 +3,477 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Utkarsh Persai | Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-      --accent: #0071e3;
-      --light-accent: #2997ff;
-      --subtle-text: #6e6e73;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'SF Pro Display', 'Inter', sans-serif;
-      font-weight: 400;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.8;
-      animation: bodyFade 1.2s ease-in-out;
-    }
-    @keyframes bodyFade {
-      0% {opacity: 0; transform: translateY(20px);}
-      100% {opacity: 1; transform: translateY(0);}
-    }
-    header {
-      padding: 4rem 1rem 2rem;
-      text-align: center;
-      background: var(--bg-color);
-      animation: fadeIn 1.5s ease-in-out forwards;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--text-color);
-      opacity: 0;
-      animation: slideFadeIn 1.2s ease forwards;
-      animation-delay: 0.2s;
-    }
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: var(--subtle-text);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0;
-      animation: slideFadeIn 1.2s ease forwards;
-      animation-delay: 0.4s;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap; /* This is crucial for horizontal layout and wrapping on smaller screens */
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background-color: #f5f5f7;
-      border-bottom: 1px solid #d2d2d7;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      animation: fadeInDown 0.8s ease-in-out;
-    }
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      background-color: transparent;
-      font-weight: 500;
-      position: relative; /* Added for the ::after pseudo-element */
-    }
-    nav a::after {
-      content: '';
-      display: block;
-      height: 2px;
-      background: var(--accent);
-      width: 0;
-      transition: width 0.3s;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a:hover {
-      color: var(--accent);
-      background-color: rgba(0, 113, 227, 0.1);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    nav a.download-btn {
-      background-color: #a6a6ff;
-      color: #000;
-      font-weight: 600;
-      padding: 0.6rem 1.4rem;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-    nav a.download-btn:hover {
-      background-color: #b6b6ff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transform: translateY(-1px);
-    }
-    section {
-      max-width: 960px;
-      margin: 3rem auto;
-      padding: 1rem 1.5rem;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    section:nth-child(even) {
-      animation-delay: 0.2s;
-    }
-    section:nth-child(odd) {
-      animation-delay: 0.4s;
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li {
-      margin-bottom: 0.8rem;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-    ul li::before {
-      content: "\2022";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--subtle-text);
-      font-size: 0.9rem;
-      border-top: 1px solid #d2d2d7;
-      margin-top: 3rem;
-      background: #f5f5f7;
-      animation: fadeIn 1.5s ease-in;
-    }
-    a {
-      color: var(--accent);
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: #005bb5;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    @keyframes slideFadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-    @media screen and (max-width: 768px) {
-      nav {
-        gap: 0.8rem;
-      }
-      nav a {
-        font-size: 0.95rem;
-        padding: 0.4rem 0.8rem;
-      }
-    }
-    @media screen and (max-width: 600px) {
-      header {
-        padding: 2rem 1rem 1rem;
-      }
-      header h1 {
-        font-size: 1.6rem;
-        line-height: 1.3;
-      }
-      header p {
-        font-size: 1rem;
-        padding: 0 1rem;
-      }
-      nav {
-        flex-direction: column; /* This makes them stack vertically on small screens */
-        align-items: center;
-        gap: 0.6rem;
-      }
-      nav a {
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
-        width: 90%; /* Make buttons full width on small screens */
-        text-align: center;
-      }
-      section {
-        padding: 1rem;
-      }
-      h2 {
-        font-size: 1.4rem;
-      }
-      ul li {
-        font-size: 0.95rem;
-      }
-      footer {
-        font-size: 0.8rem;
-        padding: 1.5rem 1rem;
-      }
-    }
-    section.parallax {
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-      padding: 6rem 2rem;
-      font-size: 1.6rem;
-      font-weight: bold;
-    }
-</style>
-<script>
-  // Mobile-friendly toggle for nav (hamburger can be added later)
-  window.addEventListener("DOMContentLoaded", () => {
-    const nav = document.querySelector("nav");
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  <title>PORTFOLIO_OS // Utkarsh Persai</title>
+  <meta name="description" content="Utkarsh Persai — CS Undergrad at VIT Vellore. ML & IoT Engineer. Hackathon Winner. Building scalable systems with Python, FastAPI, React, and ESP32." />
+  <meta name="author" content="Utkarsh Persai" />
 
-    document.querySelectorAll("section").forEach(sec => observer.observe(sec));
-  });
-</script>
+  <!-- Open Graph -->
+  <meta property="og:title" content="PORTFOLIO_OS // Utkarsh Persai" />
+  <meta property="og:description" content="CS Undergrad @ VIT Vellore | ML & IoT Engineer | 1st Place Hackathon Winner" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-utki445.github.io" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%2300f2ff'/><stop offset='100%25' stop-color='%23e9b3ff'/></linearGradient></defs><text y='.9em' font-size='90' fill='url(%23g)'>U</text></svg>" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Utkarsh Persai</h1>
-    <p style="font-style: italic; font-size: 1rem; margin-top: 0.5rem; color: var(--subtle-text);">Turning data into direction, insight into impact.</p>
-    <p>B.Tech CSE @ VIT Vellore | Passionate about Data Science, Business Intelligence, and Analytics. I combine technical skills and creativity to bring real-world impact through data-driven solutions.</p>
-  </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank">LinkedIn</a>
-    <a href="https://github.com/utki445" target="_blank">GitHub</a>
-    <a href="Resume.pdf" download class="download-btn">Download Resume</a>
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="material-symbols-outlined logo-icon">terminal</span>
+        <span class="logo-text">PORTFOLIO_OS</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Resume_Utkarsh_Persai.pdf" download class="nav-cta"><i class="fas fa-download"></i> RESUME</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
   </nav>
 
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="pacman"></div>
+        <span>LEVEL_01 // READY_TO_DEPLOY</span>
+      </div>
+      <h1>
+        I AM
+        <span class="highlight typed-line" id="typed-text"></span>
+      </h1>
+      <p class="hero-desc">
+        Building high-fidelity systems at the intersection of Machine Learning, IoT, and Software Engineering. CS Undergrad @ VIT Vellore, focused on turning complex problems into robust, terminal-grade solutions.
+      </p>
+      <div class="hero-buttons">
+        <a href="Resume_Utkarsh_Persai.pdf" download class="btn btn-primary">
+          <span class="material-symbols-outlined" style="font-size:1rem">download</span>
+          DOWNLOAD_RESUME
+        </a>
+        <a href="#contact" class="btn btn-glass">
+          INITIATE_CONTACT
+          <span class="material-symbols-outlined" style="font-size:1rem">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I’m a Computer Science undergraduate from VIT Vellore with a keen interest in Data Science, Business Intelligence, and Web Development. I enjoy converting data into powerful visual insights, building dashboards, and creating impactful strategies. I aim to solve business problems using technical tools like Python, Power BI, SQL, and Tableau while continuously learning and adapting.</p>
-      <p>Hailing from Bhopal, Madhya Pradesh, I completed my schooling with a strong academic record and actively participated in various technical and leadership initiatives. My academic background and hands-on experiences have shaped me into a curious, analytical, and purpose-driven learner.</p>
+
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span class="active"></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- ===== ABOUT — Bento Grid ===== -->
+    <section class="section" id="about">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--secondary)">person</span>
+        <h2>System_Profile</h2>
+      </div>
+      <div class="about-bento">
+        <div class="glass-card about-readme reveal reveal-delay-1">
+          <div class="readme-header">
+            <span class="material-symbols-outlined" style="font-size:0.9rem">description</span>
+            README.md
+          </div>
+          <h3>ML & IoT Engineer · Problem Solver</h3>
+          <p>Computer Science undergraduate at VIT Vellore with strong foundations in software engineering, machine learning, and system design. I specialize in building scalable backend systems, real-time data pipelines, and intelligent applications that integrate hardware with AI models.</p>
+          <p>From wearable medical devices to smart agriculture systems — I build things that make a real-world impact. Proficient in end-to-end project implementation and deployment.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-value" data-count="8.21">0</span>
+              <span class="stat-label">GPA_5TH_SEM</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value purple" data-count="2" data-suffix="+">0</span>
+              <span class="stat-label">MAJOR_PROJECTS</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value gold" data-count="1" data-suffix="st">0</span>
+              <span class="stat-label">HACKATHON_WIN</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" data-count="4" data-suffix="+">0</span>
+              <span class="stat-label">CERTIFICATIONS</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-side">
+          <div class="glass-card side-card red reveal reveal-delay-2">
+            <span class="material-symbols-outlined card-icon" style="font-variation-settings: 'FILL' 1">ads_click</span>
+            <h4>CORE_STACK</h4>
+            <p>Python, FastAPI, React, SQL, ESP32</p>
+          </div>
+          <div class="glass-card side-card pink reveal reveal-delay-3">
+            <span class="material-symbols-outlined card-icon" style="font-variation-settings: 'FILL' 1">database</span>
+            <h4>DATA_SYSTEMS</h4>
+            <p>MySQL, MQTT, WebSockets, REST APIs</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>B.Tech in Computer Science and Engineering</strong>, VIT Vellore (2023–2027)</li>
-        <li><strong>High School Diploma (81.4%)</strong>, – Bhopal, Madhya Pradesh (2021–2023)</li>
-        <li><strong>Secondary School Certificate (81%)</strong>, – Bhopal, Madhya Pradesh (2019–2021)</li>
-      </ul>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span></span><span class="active"></span><span></span><span></span>
+    </div>
+
+    <!-- ===== EXPERIENCE — Timeline ===== -->
+    <section class="section" id="experience">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--primary-container)">work</span>
+        <h2>Mission_Log</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot primary">
+            <div class="timeline-dot-inner"></div>
+          </div>
+          <div class="glass-card timeline-card">
+            <div class="timeline-card-header">
+              <div>
+                <div class="timeline-role primary">Core Member — IEEE CS VIT</div>
+                <div class="timeline-org">VIT VELLORE / APR 2024 — PRESENT</div>
+              </div>
+              <span class="timeline-badge">CURRENT_MISSION</span>
+            </div>
+            <ul class="timeline-list">
+              <li>Contributed to 10+ technical and community events across development and outreach domains</li>
+              <li>Led 4+ events with 100–250 attendees; managed logistics, execution, and coordination</li>
+              <li>Secured 3 corporate sponsorships through structured outreach and negotiations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Core Member – IEEE CS VIT</strong> (Apr 2024 – Present)<br/>Organized 4+ technical events for 100–250 participants. Initiated and secured 3 sponsorships. Collaborated on 10+ chapter activities involving marketing, logistics, and outreach.</li>
-        <li><strong>Core Committee – E-Cell VIT</strong> (Apr 2024 – Apr 2025)<br/>Coordinated 5+ high-impact entrepreneurial events. Increased social media reach by 40% through targeted campaigns. Worked in a 10+ member team to manage operations efficiently.</li>
-      </ul>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span></span><span></span><span class="active"></span><span></span>
+    </div>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--secondary)">code</span>
+        <h2>Latest_Builds</h2>
+      </div>
+      <div class="projects-grid">
+        <!-- Project 1: BreathEasy -->
+        <div class="glass-card project-card reveal reveal-delay-1">
+          <div class="project-card-header">
+            <h3>BREATHEASY_PFT</h3>
+            <span class="project-badge winner"><i class="fas fa-trophy"></i> 1ST_PLACE</span>
+          </div>
+          <div class="project-body">
+            <p>Designed an ESP32-based portable spirometry device for real-time Pulmonary Function Testing (FEV1, FVC, FEV1/FVC) aligned to ATS/ERS standards. Built FastAPI + React platform with live WebSocket streaming and gamified breathing interface for pediatric therapy compliance. Developed ML models and automated PDF reporting. Reduced hardware cost by 98% via 3D printing.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">HX710B</span>
+            <span class="tech-tag">FASTAPI</span>
+            <span class="tech-tag">REACT</span>
+            <span class="tech-tag">WEBSOCKETS</span>
+            <span class="tech-tag">SCIKIT-LEARN</span>
+            <span class="tech-tag">3D_PRINT</span>
+          </div>
+        </div>
+
+        <!-- Project 2: Smart Agri -->
+        <div class="glass-card project-card reveal reveal-delay-2">
+          <div class="project-card-header">
+            <h3>SMART_AGRI_OS</h3>
+            <span class="project-badge featured"><i class="fas fa-star"></i> IOT + ML</span>
+          </div>
+          <div class="project-body">
+            <p>Designed complete IoT-to-ML pipeline: ESP32 sensors → MQTT → Python backend → Streamlit dashboard. Implemented real-time environmental monitoring, crop prediction model with authentication and automated alert system for farmers. End-to-end data pipeline from sensor to insight.</p>
+          </div>
+          <div class="project-tech">
+            <span class="tech-tag">PYTHON</span>
+            <span class="tech-tag">ESP32</span>
+            <span class="tech-tag">MQTT</span>
+            <span class="tech-tag">STREAMLIT</span>
+            <span class="tech-tag">SCIKIT-LEARN</span>
+            <span class="tech-tag">REST_APIS</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <strong>Retail Revenue Dashboard (Power BI)</strong><br/>
-          Created a dynamic dashboard that visualizes revenue trends, identifies top customers and products, and helps derive strategic business insights using clean Excel and DAX integration.
-        </li>
-        <li>
-          <strong>GenAI Collections Strategy (TCS)</strong><br/>
-          Performed EDA and AI-driven delinquency prediction. Produced a business report to enhance collection strategy using data storytelling and actionable insights.
-        </li>
-      </ul>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span></span><span></span><span></span><span class="active"></span>
+    </div>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--tertiary-container)">bolt</span>
+        <h2>Power_Ups</h2>
+      </div>
+      <div class="skills-grid">
+        <!-- Left: Skill bars -->
+        <div class="reveal reveal-delay-1">
+          <div class="skill-group">
+            <h3>ENGINEERING_CORE</h3>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>PYTHON</span>
+                <span class="percent">90%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>SQL / MYSQL</span>
+                <span class="percent">85%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>C / C++</span>
+                <span class="percent">70%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="70%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>FASTAPI / REACT</span>
+                <span class="percent">80%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span>GIT / GITHUB</span>
+                <span class="percent">80%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Arsenal grid -->
+        <div class="reveal reveal-delay-2">
+          <div class="skill-group">
+            <h3>EXTENDED_ARSENAL</h3>
+          </div>
+          <div class="arsenal-grid">
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--ghost-red); font-variation-settings: 'FILL' 1">psychology</span>
+              <span>ML / DL</span>
+            </div>
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--ghost-cyan); font-variation-settings: 'FILL' 1">cloud</span>
+              <span>AWS</span>
+            </div>
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--ghost-pink); font-variation-settings: 'FILL' 1">sensors</span>
+              <span>IOT_SYSTEMS</span>
+            </div>
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--tertiary-container); font-variation-settings: 'FILL' 1">auto_awesome</span>
+              <span>EXPLAINABLE_AI</span>
+            </div>
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--ghost-orange); font-variation-settings: 'FILL' 1">bar_chart</span>
+              <span>DATA_VIZ</span>
+            </div>
+            <div class="glass-card arsenal-item">
+              <span class="material-symbols-outlined item-icon" style="color: var(--secondary); font-variation-settings: 'FILL' 1">architecture</span>
+              <span>SYSTEM_DESIGN</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills, Tools & Languages</h2>
-      <h4>Technical Skills</h4>
-      <ul>
-        <li>Python</li>
-        <li>MySQL</li>
-        <li>Excel</li>
-        <li>HTML/CSS</li>
-        <li>Power BI</li>
-        <li>Tableau</li>
-      </ul>
-      <h4 style="margin-top: 1.5rem;">Languages</h4>
-      <ul>
-        <li>Hindi (Native)</li>
-        <li>English (Fluent)</li>
-        <li>German (Beginner)</li>
-      </ul>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span class="active"></span><span class="active"></span><span></span><span></span>
+    </div>
+
+    <!-- ===== ACHIEVEMENTS ===== -->
+    <section class="section" id="achievements">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--tertiary-container)">emoji_events</span>
+        <h2>High_Score</h2>
+      </div>
+      <div class="glass-card achievement-card reveal reveal-delay-1">
+        <div class="achievement-icon">🏆</div>
+        <div class="achievement-content">
+          <h3>1st Place — IIC Hackathon 2026</h3>
+          <p>Won first place at the Institution's Innovation Council Hackathon at VIT Vellore for developing a 3D-printed, low-cost IoT respiratory diagnostic device — the AI-Powered Gamified Spirometry System. Built an end-to-end solution combining hardware design, ML models, and a real-time web platform.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul>
-        <li><strong>AWS APAC Architecture:</strong> Built scalable cloud solutions using AWS Elastic Beanstalk.</li>
-        <li><strong>Deloitte Data Analytics:</strong> Used Tableau and Excel to analyze data and derive decisions.</li>
-        <li><strong>TCS Data Visualisation:</strong> Created executive-ready dashboards and client-specific questions.</li>
-        <li><strong>TCS GenAI Analytics:</strong> Developed AI models for delinquency risk and visual storytelling reports.</li>
-      </ul>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span></span><span class="active"></span><span class="active"></span><span></span>
+    </div>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="section" id="certifications">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--primary-container)">verified</span>
+        <h2>Badges_Earned</h2>
+      </div>
+      <div class="certs-grid">
+        <div class="glass-card cert-card reveal reveal-delay-1">
+          <div class="cert-icon"><i class="fab fa-aws"></i></div>
+          <div class="cert-info">
+            <h4>AWS APAC Solutions Architecture</h4>
+            <p>Scalable cloud architecture design</p>
+            <p class="cert-org">AMAZON WEB SERVICES · 2025</p>
+          </div>
+        </div>
+        <div class="glass-card cert-card reveal reveal-delay-2">
+          <div class="cert-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="cert-info">
+            <h4>Data Analytics</h4>
+            <p>Tableau dashboards and analytical models</p>
+            <p class="cert-org">DELOITTE AUSTRALIA · 2025</p>
+          </div>
+        </div>
+        <div class="glass-card cert-card reveal reveal-delay-3">
+          <div class="cert-icon"><i class="fas fa-chart-pie"></i></div>
+          <div class="cert-info">
+            <h4>Data Visualisation</h4>
+            <p>Executive-level data insights</p>
+            <p class="cert-org">TATA CONSULTANCY SERVICES · 2025</p>
+          </div>
+        </div>
+        <div class="glass-card cert-card reveal reveal-delay-4">
+          <div class="cert-icon"><i class="fas fa-robot"></i></div>
+          <div class="cert-info">
+            <h4>GenAI Analytics</h4>
+            <p>AI models for delinquency risk</p>
+            <p class="cert-org">TATA CONSULTANCY SERVICES · 2025</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Feel free to reach out to me via email or phone.</p>
-      <p>Email: <a href="mailto:utkarshpersai@gmail.com">utkarshpersai@gmail.com</a></p>
-      <p>Phone: <a href="tel:+919589573779">+91 95895 73779</a></p>
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span></span><span></span><span class="active"></span><span class="active"></span>
+    </div>
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section" id="education">
+      <div class="section-header reveal">
+        <span class="material-symbols-outlined header-icon" style="color: var(--tertiary-container)">school</span>
+        <h2>Training_Data</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="glass-card edu-card reveal reveal-delay-1">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-degree">B.Tech, Computer Science & Engineering</div>
+          <div class="edu-school">VIT Vellore, Tamil Nadu</div>
+          <div class="edu-year">2023 — 2027</div>
+          <div class="edu-score">GPA: 8.21 (FALL SEM 25-26)</div>
+        </div>
+        <div class="glass-card edu-card reveal reveal-delay-2">
+          <div class="edu-icon">📚</div>
+          <div class="edu-degree">Higher Secondary (Class XII)</div>
+          <div class="edu-school">CBSE Board</div>
+          <div class="edu-year">2021 — 2023</div>
+          <div class="edu-score">81.4%</div>
+        </div>
+        <div class="glass-card edu-card reveal reveal-delay-3">
+          <div class="edu-icon">📖</div>
+          <div class="edu-degree">Secondary School (Class X)</div>
+          <div class="edu-school">CBSE Board</div>
+          <div class="edu-year">2019 — 2021</div>
+          <div class="edu-score">81%</div>
+        </div>
+      </div>
     </section>
-      <section class="parallax" style="background-image: url('https://images.unsplash.com/photo-1549921296-3c8c88f6bcd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
-      Keep exploring. Keep evolving.
+
+    <!-- Dot Divider -->
+    <div class="dot-divider">
+      <span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact">
+      <div class="glass-card contact-box reveal">
+        <h2>READY TO PLAY?</h2>
+        <p>Currently accepting new mission requests and creative collaborations.</p>
+        <div class="contact-links">
+          <a href="mailto:utkarshpersai@gmail.com" class="glass-card contact-link" id="contact-email">
+            <span class="material-symbols-outlined">mail</span>
+            <span class="label">UTKARSHPERSAI@GMAIL.COM</span>
+          </a>
+        </div>
+        <div class="contact-socials">
+          <a href="https://github.com/utki445" target="_blank" rel="noopener" class="glass-card social-btn" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank" rel="noopener" class="glass-card social-btn" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="tel:+919589573779" class="glass-card social-btn" aria-label="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+      </div>
     </section>
+
   </main>
 
-  <footer>
-    &copy; 2024 Utkarsh Persai | Inspired by Apple.com | Designed with 💻 and ☕<br/>Connect on <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank">LinkedIn</a> or <a href="https://github.com/utki445" target="_blank">GitHub</a>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://github.com/utki445" target="_blank" rel="noopener">GITHUB</a>
+        <a href="https://www.linkedin.com/in/utkarsh-persai-2087a6282" target="_blank" rel="noopener">LINKEDIN</a>
+        <a href="mailto:utkarshpersai@gmail.com">EMAIL</a>
+      </div>
+      <div class="footer-copyright">
+        <span class="material-symbols-outlined" style="font-size:0.9rem; color: var(--primary-container)">copyright</span>
+        <span>2026 UTKARSH_PERSAI. ALL RIGHTS RESERVED.</span>
+      </div>
+      <div class="footer-ghosts">
+        <span style="background: var(--ghost-red)"></span>
+        <span style="background: var(--ghost-pink)"></span>
+        <span style="background: var(--ghost-cyan)"></span>
+        <span style="background: var(--ghost-orange)"></span>
+      </div>
+    </div>
   </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
